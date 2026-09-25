@@ -1,3 +1,12 @@
+import { CheckoutPage } from './components/CheckoutPage';
+import { SiteHeader } from './components/SiteHeader';
+import { mockAddress, mockBooks } from './data/mockCheckout';
+
 export default function App() {
-  return <main style={{ padding: 48 }}>Checkout</main>;
+  return (
+    <>
+      <SiteHeader />
+      <CheckoutPage books={mockBooks} address={mockAddress} />
+    </>
+  );
 }
