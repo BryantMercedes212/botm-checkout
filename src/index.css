@@ -1,0 +1,41 @@
+/* colors pulled from the BOTM checkout */
+:root {
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-serif: Georgia, 'Times New Roman', serif;
+
+  --bg: #faf7f4;
+  --surface: #ffffff;
+  --border: #e4e1dc;
+  --text: #1a1a1a;
+  --text-muted: #6f6c68;
+  --brand: #2c68a3;
+  --brand-dark: #22548a;
+  --link: #1f6fb5;
+  --on-brand: #ffffff;
+  --disabled: #c9ccd1;
+  --focus: #9dc0e6;
+  --danger-bg: #fdf1f0;
+  --danger-border: #efc6c1;
+  --danger-text: #9b2a1c;
+  --success-bg: #e8f1fa;
+  --success-text: #2c68a3;
+
+  color-scheme: light;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+}
