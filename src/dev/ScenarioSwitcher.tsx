@@ -1,5 +1,6 @@
-// dev only: switch the mock API response via ?scenario=
-// (mock/checkoutMock.ts reads it from the Referer header)
+// Demo controls: switch the fake API response via ?scenario=
+// (mock/fakeCheckout.ts reads it from the Referer header).
+// Shown on the live demo too so reviewers can try each state. Wouldn't ship in a real app.
 const SCENARIOS = [
   { id: 'success', label: 'Success' },
   { id: 'slow', label: 'Slow (5s)' },
@@ -12,7 +13,7 @@ export function ScenarioSwitcher() {
   const current = new URLSearchParams(window.location.search).get('scenario') ?? 'success';
 
   return (
-    <nav className="dev-switcher" aria-label="Mock API scenario (dev only)">
+    <nav className="dev-switcher" aria-label="Mock API scenario (demo only)">
       <span className="dev-switcher__label">Mock API:</span>
       {SCENARIOS.map((s) => (
         <a

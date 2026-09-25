@@ -11,7 +11,7 @@ npm test           # Vitest + Testing Library
 npm run build      # type-check + production build
 ```
 
-A **dev-only bar** at the top of the page switches the mocked API response: success, slow (5s), API error, a 502 with an HTML body, or a timeout. The same outcomes can also be reached with `?scenario=<name>`.
+A **demo bar** at the top of the page switches the fake API response: success, slow (5s), API error, a 502 with an HTML body, or a timeout. The same outcomes can also be reached with `?scenario=<name>`. It's on the live demo too, so reviewers can try every state.
 
 ## Where things live
 
@@ -23,7 +23,9 @@ src/
   api/checkout.ts                  fetch wrapper: timeouts, non-JSON errors, response validation
   utils/format.ts                  Money + ship-date formatting
   data/mockCheckout.ts             Hardcoded books (real Sept 2026 picks) + address
-mock/checkoutMock.ts               Vite middleware that serves POST /api/checkout
+mock/fakeCheckout.ts               Fake backend for POST /api/checkout
+mock/checkoutMock.ts               Serves it from the Vite dev server
+api/checkout.ts                    Serves it as a Vercel function (live demo)
 ```
 
 ## Decisions and trade-offs
@@ -46,7 +48,7 @@ mock/checkoutMock.ts               Vite middleware that serves POST /api/checkou
 
 **Plain `fetch`, no data library.** This is a single mutation with no caching or shared server state, so React Query or SWR wouldn't add much here. In a larger app that already uses one, I'd use its `useMutation`.
 
-**Mocked on the server side.** The mock is Vite middleware rather than a stubbed `fetch`, so the app makes a real HTTP request and the client code is exactly what would ship. Pointing it at a real backend is a one-line `server.proxy` entry.
+**Mocked on the server side.** The fake backend runs as Vite middleware locally and as a Vercel function on the live demo, rather than a stubbed `fetch`. So the app makes a real HTTP request and the client code is exactly what would ship. Pointing it at a real backend is a one-line `server.proxy` entry.
 
 **Accessibility.** The error is announced via `role="alert"` and progress via an always-mounted `role="status"` region. Focus moves to the confirmation heading when the view changes. Covers use `alt=""` because the title is right next to them, and a broken cover image falls back to a placeholder.
 

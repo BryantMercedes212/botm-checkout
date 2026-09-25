@@ -6,7 +6,7 @@ import { ScenarioSwitcher } from './dev/ScenarioSwitcher';
 export default function App() {
   return (
     <>
-      {import.meta.env.DEV && <ScenarioSwitcher />}
+      <ScenarioSwitcher />
       <SiteHeader />
       <CheckoutPage books={mockBooks} address={mockAddress} />
     </>
