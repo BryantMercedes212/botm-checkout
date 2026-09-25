@@ -2,6 +2,8 @@
 
 A `CheckoutPage` built with React and TypeScript. It shows the member's books, the order total and their saved address, and places the order through `POST /api/checkout`, with clear loading, error and success states.
 
+**Live demo:** https://botm-checkout-sepia.vercel.app (use the bar at the top to try each API response)
+
 ## Running it
 
 ```bash
